@@ -1,0 +1,63 @@
+package gocommand
+
+import (
+	"fmt"
+	"runtime"
+	"strings"
+	"testing"
+)
+
+func TestWindowsExec(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		var cmd = NewWindowsCommand()
+		pid, out, err := cmd.Exec("dir c:/")
+
+		if err != nil {
+			t.Errorf("exec err: %s", err)
+		}
+
+		if pid == 0 {
+			t.Errorf("exec err: pid is %d", pid)
+		}
+
+		if !strings.Contains(fmt.Sprintf("%s", out), "Windows") {
+			t.Errorf("exec err: [dir c:/] command not contains Windows")
+		}
+	}
+}
+
+func TestWindowsExecAsync(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		var cmd = NewWindowsCommand()
+
+		rc := make(chan string, 1)
+		pid := cmd.ExecAsync(rc, "dir c:/")
+
+		r, ok := <-rc
+		if !ok {
+			t.Errorf("exec async read chan err!")
+		}
+
+		if r == "" {
+			t.Errorf("exec async err!")
+		}
+
+		if pid == 0 {
+			t.Errorf("exec async err: pid is %d", pid)
+		}
+
+		if !strings.Contains(r, "Windows") {
+			t.Errorf("exec async err: [dir c:/ command not contains Windows")
+		}
+	}
+}
+
+func TestWindowsExecNoWait(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		var cmd = NewWindowsCommand()
+		err := cmd.ExecNoWait("dir c:/")
+		if err != nil {
+			t.Errorf("exec nowait err: %s", err)
+		}
+	}
+}
