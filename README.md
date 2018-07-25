@@ -1,19 +1,18 @@
 # gocommand
 
-'''
-package main
 
-import (
-	"github.com/lizongshen/gocommand"
-	"log"
-)
+	package main
 
-func main() {
-	_, out, err := gocommand.NewCommand().Exec("ls /")
-	if err != nil {
-		log.Panic(err)
+	import (
+		"github.com/lizongshen/gocommand"
+		"log"
+	)
+
+	func main() {
+		_, out, err := gocommand.NewCommand().Exec("ls /")
+		if err != nil {
+			log.Panic(err)
+		}
+
+		log.Println(out)
 	}
-
-	log.Println(out)
-}
-'''
