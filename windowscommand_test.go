@@ -7,6 +7,7 @@ import (
 	"testing"
 )
 
+// 测试Windows Exec
 func TestWindowsExec(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		var cmd = NewWindowsCommand()
@@ -26,6 +27,7 @@ func TestWindowsExec(t *testing.T) {
 	}
 }
 
+// 测试Windows异步Exec
 func TestWindowsExecAsync(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		var cmd = NewWindowsCommand()
@@ -52,6 +54,7 @@ func TestWindowsExecAsync(t *testing.T) {
 	}
 }
 
+// 测试Windows下的Exec(无等待)
 func TestWindowsExecNoWait(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		var cmd = NewWindowsCommand()

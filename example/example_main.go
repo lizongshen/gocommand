@@ -1,10 +1,12 @@
 package main
 
 import (
-	"github.com/lizongshen/gocommand"
 	"log"
+
+	"github.com/lizongshen/gocommand"
 )
 
+// 这是一个示例
 func main() {
 	_, out, err := gocommand.NewCommand().Exec("ls /")
 	if err != nil {
@@ -12,4 +14,5 @@ func main() {
 	}
 
 	log.Println(out)
+
 }

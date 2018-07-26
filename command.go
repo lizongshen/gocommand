@@ -4,6 +4,7 @@ import (
 	"runtime"
 )
 
+// Command的初始化函数
 func NewCommand() Commander {
 	var cmd Commander
 

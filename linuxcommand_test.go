@@ -7,6 +7,7 @@ import (
 	"testing"
 )
 
+// 测试Linux Exec
 func TestLinuxExec(t *testing.T) {
 	if runtime.GOOS == "linux" {
 		var cmd = NewLinuxCommand()
@@ -26,6 +27,7 @@ func TestLinuxExec(t *testing.T) {
 	}
 }
 
+// 测试Linux异步Exec
 func TestLinuxExecAsync(t *testing.T) {
 	if runtime.GOOS == "linux" {
 		var cmd = NewLinuxCommand()
@@ -52,6 +54,7 @@ func TestLinuxExecAsync(t *testing.T) {
 	}
 }
 
+// 测试Linux下的Exec(无等待)
 func TestLinuxExecNoWait(t *testing.T) {
 	if runtime.GOOS == "linux" {
 		var cmd = NewLinuxCommand()
