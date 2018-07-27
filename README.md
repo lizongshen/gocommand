@@ -1,11 +1,11 @@
 # gocommand
 
+
 	package main
 
 	import (
-		"log"
-
 		"github.com/lizongshen/gocommand"
+		"log"
 	)
 
 	func main() {
@@ -15,5 +15,4 @@
 		}
 
 		log.Println(out)
-
 	}

@@ -83,7 +83,7 @@ func (lc *WindowsCommand) ExecAsync(stdout chan string, args ...string) int {
 // 执行命令行(忽略返回值)
 // args: 命令行参数
 // return: 错误消息
-func (lc *WindowsCommand) ExecNoWait(args ...string) error {
+func (lc *WindowsCommand) ExecIgnoreResult(args ...string) error {
 	args = append([]string{"-c"}, args...)
 	cmd := exec.Command("cmd", args...)
 

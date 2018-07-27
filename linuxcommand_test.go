@@ -58,7 +58,7 @@ func TestLinuxExecAsync(t *testing.T) {
 func TestLinuxExecNoWait(t *testing.T) {
 	if runtime.GOOS == "linux" {
 		var cmd = NewLinuxCommand()
-		err := cmd.ExecNoWait("ls /")
+		err := cmd.ExecIgnoreResult("ls /")
 		if err != nil {
 			t.Errorf("exec nowait err: %s", err)
 		}

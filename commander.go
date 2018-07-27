@@ -17,5 +17,5 @@ type Commander interface {
 	// 执行命令行(忽略返回值)
 	// args: 命令行参数
 	// return: 错误消息
-	ExecNoWait(args ...string) error
+	ExecIgnoreResult(args ...string) error
 }

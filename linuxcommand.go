@@ -83,7 +83,8 @@ func (lc *LinuxCommand) ExecAsync(stdout chan string, args ...string) int {
 // 执行命令行(忽略返回值)
 // args: 命令行参数
 // return: 错误消息
-func (lc *LinuxCommand) ExecNoWait(args ...string) error {
+func (lc *LinuxCommand) ExecIgnoreResult(args ...string) error {
+
 	args = append([]string{"-c"}, args...)
 	cmd := exec.Command(os.Getenv("SHELL"), args...)
 
