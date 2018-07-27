@@ -26,6 +26,8 @@ func (lc *WindowsCommand) Exec(args ...string) (int, string, error) {
 	cmd.SysProcAttr = &syscall.SysProcAttr{}
 
 	outpip, err := cmd.StdoutPipe()
+	defer outpip.Close()
+
 	if err != nil {
 		return 0, "", err
 	}
@@ -58,6 +60,8 @@ func (lc *WindowsCommand) ExecAsync(stdout chan string, args ...string) int {
 		cmd.SysProcAttr = &syscall.SysProcAttr{}
 
 		outpip, err := cmd.StdoutPipe()
+		defer outpip.Close()
+
 		if err != nil {
 			panic(err)
 		}
